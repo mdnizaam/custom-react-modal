@@ -1,12 +1,24 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import { useState } from "react";
+import Modal from "./Modal";
 
-function App() {
+const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <>
-      <Home />
-    </>
+    <div>
+      <Modal isModalOpen={isModalOpen} handleModalClose={handleModalClose}/>
+      <div className="flex justify-center">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-pink-700 p-2 rounded-md"
+        >
+          Modal Open
+        </button>
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
